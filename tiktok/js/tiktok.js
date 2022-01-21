@@ -27,21 +27,35 @@ function square(x) {
 }
 console.log(square(5));
 console.log(sub(5, 4)); */
-function magicAlgorithm(numLikes, comments) {
+function magicAlgorithm(numLikes, comments, numShares, numFollowers) {
     let rank = 0;
 
-    if (numLikes >= 10000 && comments.includes("food", or "fjg")) {
+    if (numLikes >= 10000 && comments.includes("goats") && numShares >= 10000 && numFollowers >= 10000) {
         rank = 1;
-    } else if (numLikes >= 5000 && comments.includes("dancing")) {
-        rank = 100
+    } else if (numLikes >= 5000 && comments.includes("dancing") && numShares >= 100 && numFollowers >= 1000) {
+        rank = 100;
     } else {
         rank = 1000;
     }
     return rank;
 }
 
-alert("welcome to tiktok")
-let likeCount = NumberPrompt("how many likes did the video get")
-let comment = promt("what is the most recent coment on the video?")
-let rankResult = magicAlgorithm(likeCount, comment);
-//let resultString =
+function popup() {
+    alert("welcome to tiktok")
+    let likeCount = Number(prompt("how many likes did the video get"));
+    let comment = prompt("what is the most recent coment on the video?");
+    let numShares = Number(prompt("how many shares did this video get?"));
+    let rankResult = magicAlgorithm(likeCount, comment, numShares);
+    let resultString = "the video's rating is: " + rankResult;
+    alert(resultString);
+}
+
+function showUI() {
+    let likeCount = Number(document.getElementById("like-textbox").vaulue);
+    let comment = document.getElementById("comment-textbox").vaulue;
+    let shareCount = Number(document.getElementById("share-textbox").vaule);
+    let followerCount = Number(document.getElementById("followers-textbox").value);
+
+    let rankResult = magicAlgorithm(likeCount, comment, shareCount, followerCount)
+    document.getElementById("result").innerHTML = "Tiktok Rank" + rankResult;
+}
