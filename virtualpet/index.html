@@ -12,25 +12,25 @@
     <div style="text-align:center">
         <h1>This is Max</h1>
         <h3>Do all of the tasks to make him fall asleep</h3>
-        <img src="images/max-asleep.jfif" alt="Max Asleep">
-        <p id="pet-condition">Max is Asleep</p>
+        <img id="pet-img" width="350px" height="150px" src="images/max-base.jpg" alt="This is max">
+        <p id="pet-cond">This is max</p>
     </div>
     <div style="position:absolute; top:340px; left: 400px;">
         <h3>Max's Hunger level</h3>
-        <meter id="hunger-meter" min="0" max="10"></meter>
-        <p id="hunger-para">10</p>
+        <meter id="hunger-meter" min="0" max="10" value="7"></meter>
+        <p id="hunger-para">7</p>
         <button id="hunger-button" onclick="feedPet()">Feed Me!</button>
     </div>
     <div style="position:absolute; top:340px; left: 625px;">
         <h3>Max's Need to pee</h3>
-        <meter id="pee-meter" min="0" max="10"></meter>
-        <p id="pee-para">10</p>
+        <meter id="pee-meter" min="0" max="10" value="7"></meter>
+        <p id="pee-para">7</p>
         <button id="pee-button" onclick="letOut()">Let out!</button>
     </div>
     <div style="position:absolute; top:340px; left: 850px;">
         <h3>Max's Energy</h3>
-        <meter id="energy-meter" min="0" max="10"></meter>
-        <p id="energy-para">10</p>
+        <meter id="energy-meter" min="0" max="10" value="7"></meter>
+        <p id="energy-para">7</p>
         <button id="energy-button" onclick="tireDog()">Tire out!</button>
     </div>
     <script src="js/pet.js"></script>
