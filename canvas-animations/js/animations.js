@@ -7,15 +7,20 @@ let playerY = 250;
 let playerSpeed = 2;
 let playerXDir = 0;
 let playerYDir = 0;
+const PADDLE_WIDTH = 100;
+const PADDLE_HEIGHT = 20;
+
 //ball pos
 let ballX = 100;
 let ballY = 100;
 let ballXDir = 1.5;
 let ballYDir = 2;
-let ballRadius = 15;
+const BALL_RADIUS = 15;
 
 function drawPlayer() {
     canvy.fillRect(playerX, playerY, 100, 20);
+    canvy.fillStyle = ("(255,255,255)")
+
 }
 
 function movePlayer() {
@@ -24,20 +29,21 @@ function movePlayer() {
     if (playerX < 0) {
         playerX = 0;
 
-    } else if (playerX > 500 - 100) {
-        playerX = 500 - 100;
+    } else if (playerX > 500 - PADDLE_WIDTH) {
+        playerX = 500 - PADDLE_WIDTH;
     }
     if (playerY < 0) {
         playerY = 0;
-    } else if (playerY > 500 - 20) {
-        playerY = 500 - 20
+    } else if (playerY > 500 - PADDLE_HEIGHT) {
+        playerY = 500 - PADDLE_HEIGHT
     }
 }
 
 function drawBall() {
     canvy.beginPath()
-    canvy.arc(ballX, ballY, ballRadius, 0, 2 * Math.PI);
+    canvy.arc(ballX, ballY, BALL_RADIUS, 0, 2 * Math.PI);
     canvy.fill();
+    canvy.fillStyle = "255,255,255"
 }
 
 function moveBall() {
@@ -46,11 +52,23 @@ function moveBall() {
 }
 
 function wallbounce() {
-    if ((ballY > 500 - ballRadius) || (ballY < 0 + ballRadius)) {
+    if ((ballY > 500 - BALL_RADIUS) || (ballY < 0 + BALL_RADIUS)) {
         ballYDir = ballYDir * -1;
-    } else if ((ballX > 500 - ballRadius) || (ballX < 0 + ballRadius)) {
+    } else if ((ballX > 500 - BALL_RADIUS) || (ballX < 0 + BALL_RADIUS)) {
         ballXDir = ballXDir * -1;
     }
+    //did i hit pattle?
+    if (ballX + BALL_RADIUS >= playerX &&
+        ballX - BALL_RADIUS <= playerX + PADDLE_WIDTH &&
+        ballY + BALL_RADIUS >= playerY &&
+        ballY - BALL_RADIUS <= playerY + PADDLE_HEIGHT) {
+        ballYDir = ballYDir * -1.25;
+
+    }
+    // if (ballYDir + ballXDir === playerXDir + playerYDir) {
+    //   ballXDir = ballXDir * 1.5;
+    // ballYDir = ballYDir * 1.5;
+    //   }
 }
 
 function refreshUI() {
@@ -100,7 +118,7 @@ function keyRealesed(event) {
 
 
 
-
+//code from demo
 
 //position
 let xPosition = 10
