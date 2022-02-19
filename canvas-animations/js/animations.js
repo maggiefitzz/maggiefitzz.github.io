@@ -1,6 +1,6 @@
 let myCanvas = document.getElementById("my-canvas");
 let canvy = myCanvas.getContext("2d");
-
+let tennis = document.getElementById("tennis");
 //player position
 let playerX = 250;
 let playerY = 250;
@@ -9,7 +9,8 @@ let playerXDir = 0;
 let playerYDir = 0;
 const PADDLE_WIDTH = 100;
 const PADDLE_HEIGHT = 20;
-
+const IMG_HEIGHT = 40;
+const IMG_WIDTH = 40;
 //ball pos
 let ballX = 100;
 let ballY = 100;
@@ -51,10 +52,14 @@ function moveBall() {
     ballX += ballXDir;
 }
 
+function drawImage() {
+    canvy.drawImage(tennis, ballX, ballY, IMG_WIDTH, IMG_HEIGHT);
+}
+
 function wallbounce() {
-    if ((ballY > 500 - BALL_RADIUS) || (ballY < 0 + BALL_RADIUS)) {
+    if ((ballY > 500 - IMG_HEIGHT) || (ballY < 0 + IMG_HEIGHT)) {
         ballYDir = ballYDir * -1;
-    } else if ((ballX > 500 - BALL_RADIUS) || (ballX < 0 + BALL_RADIUS)) {
+    } else if ((ballX > 500 - IMG_WIDTH) || (ballX < 0 + IMG_WIDTH)) {
         ballXDir = ballXDir * -1;
     }
     //did i hit pattle?
@@ -77,7 +82,7 @@ function refreshUI() {
     drawPlayer();
     wallbounce();
     moveBall();
-    drawBall();
+    drawImage();
 }
 //get paragraphs
 let keydownOutput = document.getElementById("keydown-output");
