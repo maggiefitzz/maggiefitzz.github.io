@@ -1,25 +1,71 @@
+let stateImg = document.getElementById("state-img");
+photos = ["images/alabama.jpg", "images/alaska.png", "images/arizona.png", "images/arkansas.jpg", "images/california.jpg", "images/colorado.jpg", "iamges/connecticut.png", "images/delaware.jpg", "images/georgia.png", "images/hawaii.png", "images/idaho.jpg", "images/illinois.jpg", "images/indiana.jpg", "images/iowa.jpg", "images/kansas.jpg", "images/kentucky.png", "images/louisiana.jpg", "images/maine.jpg", "images/maryland.jpg", "images/massachusetts.png", "images/michigan.jpg", "images/minnesota.png", "images/mississippi.png", "images/missouri.jpg", "images/montana.jpg", "images/nebraska.jpg", "images/nevada.jpg", "images/newhampshire.png", "images/newjersey.jpg", "images/newmexico.jpg", "images/newyork.jpg", "images/northcarolina.jpg", "images/northdakota.png", "images/ohio.jpg", "images/oklahoma.jpg", "images/oregon.jpg", "images/pennsylvania.png", "images/rhodeisland.jpg", "images/southcarolina.png", "images/southdakota.png", "images/tennessee.png", "images/texas.png", "images/utah.jpg", "images/vermont.png", "images/virginia.png", "images/washington.png", "images/westvirginia.png", "images/wisconsin.jpg", "images/wyoming.jpg", ]
+statearray = ["alabama", "alaska", "arizona", "arkansas", "california", "colorado", "connecticut", "delaware", "georgia", "hawaii", "idaho", "illinois", "indiana", "iowa", "kansas", "kentucky", "louisana", "maine", "maryland", "massachusetts", "michigan", "minnesota", "mississippi", "missouri", "montana", "nebraska", "nevada", "new hampshire", "new jersey", "new mexico", "new york", "north carolina", "north dakota", "ohio", "oklahoma", "oregon", "pennsylvania", "rhode island", "south carolina", "south dakota", "tennessee", "texas", "utah", "vermont", "virginia", "washington", "west virginia", "wisconsin", "wyoming", ]
+let randomNum = 0;
+let image = photos[randomNum];
+let answer = statearray[randomNum];
+let myCanvas = document.getElementById("my-canvas");
+let canvy = myCanvas.getContext("2d");
+let correct = document.getElementById("correct");
+let incorrect = document.getElementById("incorrect");
+const IMG_HEIGHT = 75;
+const IMG_WIDTH = 75;
+/*function imgFunction() {
+    console.log('hello')
+    image.src = photos[randomNum];
+    answer = photos[randomNum];
+    [html in img: onload="imgFunction()"]
+} */
+function clearCanvy() {
+    canvy.clearRect(0, 0, 100, 100);
+}
+
+function drawCorrect() {
+    canvy.drawImage(correct, 5, 0, IMG_WIDTH, IMG_HEIGHT);
+    setTimeout(clearCanvy, 3000);
+
+}
+
+function drawInncorrect() {
+    canvy.drawImage(incorrect, 5, 0, IMG_WIDTH, IMG_HEIGHT);
+    setTimeout(clearCanvy, 3000);
+}
+
 function stateAnswer() {
-    let usersAnswer = prompt("what is the correct answer?")
-    if (usersAnswer === "alabama") {
-        alert("good job that is the correct answer")
+    let answerT = document.getElementById("textbox").value;
+    if (answerT === answer) {
+        // alert('you got the correct answer');
+        drawCorrect();
+        randomNum = Math.floor(Math.random() * 23) + 1;
+        answer = statearray[randomNum];
+        image = photos[randomNum];
+        stateImg.src = image;
     } else {
-        alert("try again")
+        drawInncorrect();
     }
 }
 
+function startTimer(duration, display) {
+    let timer = duration,
+        minutes, seconds;
+    setInterval(function() {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
 
-/* html code:
- <form action="" id="state-name">
- <label for="sname">state name:</label>
- <input type="text" id="sname" name="sname" value=""><br>
- <input type="submit" value="Submit">
-</form>
-js code:
-function stateAnswer() {
-    let state = getElementById.document("state-name");
-    if (state == 'alabama') {
-        alert("this is correct!");
-    } else {
-        alert("try again");
-    }
-} */
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+            alert("your time is up! good job!")
+        }
+    }, 1000);
+}
+
+window.onload = function() {
+    let fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};

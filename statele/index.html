@@ -6,14 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+
+    </style>
 </head>
 
-<body>
+<body style="text-align:center">
     <h1>STATELE</h1>
     <h3>see how many states you can guess in 5 minutes!</h3>
-    <img id="state-img" width="350px" height="350px" src="images/alabama.jpg">
+    <div> Time ends in <span id="time">05:00</span> minutes!</div>
+    <img id="state-img" width="300px" height="300px" src="images/alabama.jpg">
     <p>what state is this?</p>
-    <button onclick="stateAnswer ()">click here to answer</button>
+    <input type="text" name="answer" id="textbox">
+    <button id="calculate-buttun" onclick="stateAnswer()">click here to answer</button>
+    <br>
+    <canvas id="my-canvas" width="100" height="100" style="border: 1px solid black;"></canvas>
+    <img id="correct" src="images/correct.png" alt="correct" style="visibility: hidden;">
+    <img id="incorrect" src="images/incorrect.png" alt="incorrect" style="visibility: hidden;">
     <script src="js/statele.js"></script>
 </body>
 
