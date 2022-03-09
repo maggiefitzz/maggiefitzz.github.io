@@ -1,6 +1,7 @@
 let stateImg = document.getElementById("state-img");
-photos = ["images/alabama.jpg", "images/alaska.png", "images/arizona.png", "images/arkansas.jpg", "images/california.jpg", "images/colorado.jpg", "iamges/connecticut.png", "images/delaware.jpg", "images/georgia.png", "images/hawaii.png", "images/idaho.jpg", "images/illinois.jpg", "images/indiana.jpg", "images/iowa.jpg", "images/kansas.jpg", "images/kentucky.png", "images/louisiana.jpg", "images/maine.jpg", "images/maryland.jpg", "images/massachusetts.png", "images/michigan.jpg", "images/minnesota.png", "images/mississippi.png", "images/missouri.jpg", "images/montana.jpg", "images/nebraska.jpg", "images/nevada.jpg", "images/newhampshire.png", "images/newjersey.jpg", "images/newmexico.jpg", "images/newyork.jpg", "images/northcarolina.jpg", "images/northdakota.png", "images/ohio.jpg", "images/oklahoma.jpg", "images/oregon.jpg", "images/pennsylvania.png", "images/rhodeisland.jpg", "images/southcarolina.png", "images/southdakota.png", "images/tennessee.png", "images/texas.png", "images/utah.jpg", "images/vermont.png", "images/virginia.png", "images/washington.png", "images/westvirginia.png", "images/wisconsin.jpg", "images/wyoming.jpg", ]
-statearray = ["alabama", "alaska", "arizona", "arkansas", "california", "colorado", "connecticut", "delaware", "georgia", "hawaii", "idaho", "illinois", "indiana", "iowa", "kansas", "kentucky", "louisana", "maine", "maryland", "massachusetts", "michigan", "minnesota", "mississippi", "missouri", "montana", "nebraska", "nevada", "new hampshire", "new jersey", "new mexico", "new york", "north carolina", "north dakota", "ohio", "oklahoma", "oregon", "pennsylvania", "rhode island", "south carolina", "south dakota", "tennessee", "texas", "utah", "vermont", "virginia", "washington", "west virginia", "wisconsin", "wyoming", ]
+let imgCount = 0;
+photos = ["images/alabama.jpg", "images/alaska.png", "images/arizona.png", "images/arkansas.jpg", "images/california.jpg", "images/colorado.jpg", "images/connecticut.png", "images/delaware.jpg", "images/georgia.png", "images/hawaii.png", "images/idaho.jpg", "images/illinois.jpg", "images/indiana.jpg", "images/iowa.jpg", "images/kansas.jpg", "images/kentucky.png", "images/louisiana.jpg", "images/maine.jpg", "images/maryland.jpg", "images/massachusetts.png", "images/michigan.jpg", "images/minnesota.png", "images/mississippi.png", "images/missouri.jpg", "images/montana.jpg", "images/nebraska.jpg", "images/nevada.jpg", "images/newhampshire.png", "images/newjersey.jpg", "images/newmexico.jpg", "images/newyork.jpg", "images/northcarolina.jpg", "images/northdakota.png", "images/ohio.jpg", "images/oklahoma.jpg", "images/oregon.jpg", "images/pennsylvania.png", "images/rhodeisland.jpg", "images/southcarolina.png", "images/southdakota.png", "images/tennessee.png", "images/texas.png", "images/utah.jpg", "images/vermont.png", "images/virginia.png", "images/washington.png", "images/westvirginia.png", "images/wisconsin.jpg", "images/wyoming.jpg", ]
+statearray = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming", ]
 let randomNum = 0;
 let image = photos[randomNum];
 let answer = statearray[randomNum];
@@ -40,6 +41,7 @@ function stateAnswer() {
         answer = statearray[randomNum];
         image = photos[randomNum];
         stateImg.src = image;
+        imgCount += 1;
     } else {
         drawInncorrect();
     }
@@ -59,7 +61,7 @@ function startTimer(duration, display) {
 
         if (--timer < 0) {
             timer = duration;
-            alert("your time is up! good job!")
+            alert("Your time is up! You got: " + imgCount)
         }
     }, 1000);
 }
